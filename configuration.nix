@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/nix-direnv.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -22,7 +21,7 @@
 
   hardware.opengl.enable = true;
 
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   networking.hostName = "nammamachine"; # Define your hostname.
   # Pick only one of the below networking options.
