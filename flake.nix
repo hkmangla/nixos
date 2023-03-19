@@ -29,6 +29,7 @@
               imports = [
                 # Your machine's configuration.nix goes here
                 ./configuration.nix
+                ./nixos/docker.nix
                 {
                   users.users.${myUserName}.isNormalUser = true;
                 }

@@ -121,7 +121,6 @@
      vscode
      postman
      slack
-     docker
      kitty
      git
      lazygit
