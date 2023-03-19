@@ -32,29 +32,26 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  
-  services.xserver.windowManager.xmonad = {
+
+  environment.variables.EDITOR = "nvim"; 
+  programs.neovim = {
     enable = true;
-    enableContribAndExtras = true;
+    configure = {
+      customRC = ''
+        set number relativenumber
+        set list
+        if &diff
+          colorscheme blue
+        endif
+      '';
+      packages.myVimPackage = with pkgs.vimPlugins; {
+        start = [ vim-nix ];
+      };
+    };
+    viAlias = true;
+    vimAlias = true;
   };
 
-  programs.neovim = {
-  enable = true;
-  configure = {
-    customRC = ''
-      set number
-      set cc=80
-      set list
-      set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
-      if &diff
-        colorscheme blue
-      endif
-    '';
-    packages.myVimPackage = with pkgs.vimPlugins; {
-      start = [ vim-nix ];
-    };
-   };
-  };
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   # console = {
@@ -64,13 +61,22 @@
   #  };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+    windowManager = {
+      xmonad = {
+        enable = true;
+        enableContribAndExtras = true;
+      };
+    };
+  };
 
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  
+
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -113,7 +119,7 @@
      docker
      kitty
      git
-     neovim
+     julia
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -149,4 +155,3 @@
   system.stateVersion = "22.11"; # Did you read the comment?
 
 }
-
