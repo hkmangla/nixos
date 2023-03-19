@@ -36,7 +36,7 @@
                 self.nixosModules.home-manager
                 {
                   home-manager.users.${myUserName} = {
-                    # imports = [ self.homeModules.default ];
+                    imports = [ self.homeModules.default ];
                     home.stateVersion = "22.11";
                   };
                 }
@@ -52,7 +52,8 @@
           };
         };
 
-      perSystem = { pkgs, ... }: {
+      perSystem = { pkgs, self', ... }: {
+        packages.default = self'.packages.activate;
         devShells.default = pkgs.mkShell {
           buildInputs = [
             pkgs.nixpkgs-fmt
