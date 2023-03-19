@@ -36,7 +36,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   environment.variables.EDITOR = "nvim"; 
-  programs.neovim = {
+  /* programs.neovim = {
     enable = true;
     configure = {
       customRC = ''
@@ -52,7 +52,7 @@
     };
     viAlias = true;
     vimAlias = true;
-  };
+  }; */
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";

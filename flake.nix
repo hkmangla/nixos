@@ -48,6 +48,7 @@
             imports = [
               ./home/starship.nix
               ./home/direnv.nix
+              ./home/neovim.nix
             ];
           };
         };
