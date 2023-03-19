@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/nix-direnv.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -17,6 +18,7 @@
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = [ "root" "hkmangla" ];
 
   hardware.opengl.enable = true;
 
@@ -46,7 +48,7 @@
         endif
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
-        start = [ vim-nix ];
+        start = [ vim-nix coc-nvim haskell-vim ];
       };
     };
     viAlias = true;
@@ -113,6 +115,10 @@
      wget
      firefox
      bitwarden
+     htop
+     nil  # nix LSP
+     ncdu
+     nodejs
      vscode
      postman
      slack
@@ -122,6 +128,7 @@
      lazygit
      tmate
      julia
+     cachix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
