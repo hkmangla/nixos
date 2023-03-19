@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -35,7 +36,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  environment.variables.EDITOR = "nvim"; 
+  environment.variables.EDITOR = "nvim";
   /* programs.neovim = {
     enable = true;
     configure = {
@@ -110,23 +111,23 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     firefox
-     bitwarden
-     htop
-     nil  # nix LSP
-     ncdu
-     nodejs
-     vscode
-     postman
-     slack
-     kitty
-     git
-     lazygit
-     tmate
-     julia
-     cachix
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    firefox
+    bitwarden
+    htop
+    nil # nix LSP
+    ncdu
+    nodejs
+    vscode
+    postman
+    slack
+    kitty
+    git
+    lazygit
+    tmate
+    julia
+    cachix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
