@@ -16,12 +16,11 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nixpkgs.config.allowUnfree = true;
-  
-  services.xserver.videoDrivers = [ "nvidia" ];
+
   hardware.opengl.enable = true;
- 
+
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  
+
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
