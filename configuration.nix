@@ -16,12 +16,13 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   hardware.opengl.enable = true;
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-  # networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nammamachine"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -111,7 +112,6 @@
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      firefox
-     haskellPackages.xmonad
      bitwarden
      vscode
      postman
@@ -119,6 +119,8 @@
      docker
      kitty
      git
+     lazygit
+     tmate
      julia
   ];
 
